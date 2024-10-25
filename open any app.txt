@@ -1,0 +1,16 @@
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+		
+		   binding.btn.setOnClickListener(v -> {
+            String packageName = "com.jksurajpuriya.homekey";
+            if (isAppInstalled(packageName)) {
+                Intent intent = getPackageManager().getLaunchIntentForPackage(packageName);
+                if (intent != null) {
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(MainActivity.this, "Could not open the app!", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(MainActivity.this, "App not found!", Toast.LENGTH_SHORT).show();
+            }
+        });
